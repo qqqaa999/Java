@@ -120,4 +120,3 @@ java 공부 및 자료구조와 알고리즘
 		return type--> 반환할 값이 있냐? 없냐? --> 없으면 void(빈 공간,empty)
 		Void 메서드(함수)는 호출하면 결과로써 특별히 반환되는 값은 없이 수행되는 메서드.
 	
-![image](https://user-images.githubusercontent.com/69742511/158390807-17d0fe5e-e90e-4d30-82e3-bdc49f943982.png)
