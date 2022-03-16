@@ -226,4 +226,92 @@ java 공부 및 자료구조와 알고리즘
 			§ System.out.printf("저는 %d살의 대학생입니다.",b);
 			§ 소수점 출력 같은 경우는 %f에서 %.(소수점 자리를 적어주면됨)f
 ![image](https://user-images.githubusercontent.com/69742511/158619013-e20fb0d5-00b0-48c5-bc63-3aa37b0b398f.png)
+문제.17 정수형(int)을 문자열(String)로 변환하여 정수의 자릿수를 구하는 코드를 구현해보시오.
+	- 정수 12345를 입력하면 자릿구가 "5"로 출력되도록 한다.
+	
+	정답 : 
+		public static void main(String[] args) {
+				int num = 12345;
+				System.out.println(String.valueOf(num).length());
+				System.out.println(String.valueOf(num) + 1);
+				System.out.println("1"+(num+1)); // String으로 시작하는 경우 뒤에 있는 입력값 들도
+				// String 이라고 인식하여 출력 값 1123451로 출력이 됨
+					// --> 뒤에 정수들을 정수로 인식하게 하고 싶으면 
+					System.out.println("1"+(num+1)); 가로를 해주면 됨.
+				// length()는 문자열과 배열만 사용가능.
+				// String.valueOf(변수)는 문자열로 바꾸어줌.
+				// Integer.valueOf(변수)는 정수로 바꾸어줌.
+			}
+		
+		}
+
+문제.18 수치 연산자에 대해서 설명해보시오.
+	
+	정답 :
+		public static void j_18(String[] args) {
+			int a,b,c,d;
+			a=60;b=8;c=300;d=400;
+			System.out.println("a+b="+a+b); // 문자열로 인식
+			System.out.println("a+b="+(a+b)); // 더하기 +
+			System.out.println("a+b="+(a-b)); // 빼기 -
+			System.out.println("a+b="+(a*b)); // 곱하기 *
+			System.out.println("a+b="+(a/b)); // 나누기 /
+			System.out.println("a+b="+(a%b)); // 나머지 %
+		}
+
+문제.19 축약된 형태의 연산자를 사용하요 변수 a의 값을 증가시켜보시오.
+	정답 :
+		public static void j_19(String[] args) {
+				int a = 0, b =100;
+				a = a + 1;
+				System.out.println(a); // 1
+				a += 1;
+				System.out.println(a); // 2
+				a++;
+				System.out.println(a); // 3
+				// ++,-- 연산자는 1씩 증가시킴.
+			}
+	
+	
+문제.20  수치 연산자를 사용한 연산에서 소수점 결과가 예상과 다르게 나오는 것을 설명해 보시오.
+	- 아래의 코드 결과가 올바르게 나오도록 수정해보시오.
+
+	public static void j_20(String[] args) {
+		int a = 60, b = 8;
+		int rst1 = a/b;
+		System.out.println(rst1);
+	}
+
+	정답 :
+		public static void j_20(String[] args) {
+				int a = 60, b = 8;
+				int rst1 = a/b;
+				System.out.println(rst1); // 7
+				System.out.println((float)a/b); // 7.5
+				float rst2 = a/b;
+				System.out.println(rst2); // 7 리턴 받는 자료형이 실수여도 리턴 받기전에 정수로 연산을
+										// 하고 난 뒤어서 7로 출력이 됨/
+				float rst3 = (float)a / b;
+				System.out.println(rst3); // 7.5
+				// 어느 한쪽의 값을 실수로 바꾸어주면 해결.
+				double rst4 = 60/8;
+				System.out.println(rst4); // 7 자료형이 실수형이어도 연산값들이 정수면 7이 출력됨.
+				double rst5 = 60/8.0;
+				System.out.println(rst5); // 7.5
+				// 즉, 자료형에 따라 입력 값을 잘 적어줘야됨.
+			}
+
+문제.21 관계 연산자에 대해서 설명해보시오.
+	// [!] : 관계 연산자 : ==, !=, >, >=, <, <=
+	
+	정답 : 
+		- 관계 연산자의 결과는 참(true)과 거짓(flase)이 됨.
+		- == : 같다, != : 같지 않다, >,< : 방향에 있는 수가 더 크다, >=,<= : 크거나 같다.
+
+문제.22 논리 연산자에 대해 설명해보시오.
+	
+	정답 : 
+		- &&(and), ||(or), !(not)
+![image](https://user-images.githubusercontent.com/69742511/158619668-0f43bcbd-38e8-4810-82eb-d01c7ea6c6bf.png)
+
 
