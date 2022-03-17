@@ -314,4 +314,44 @@ java 공부 및 자료구조와 알고리즘
 		- &&(and), ||(or), !(not)
 ![image](https://user-images.githubusercontent.com/69742511/158619668-0f43bcbd-38e8-4810-82eb-d01c7ea6c6bf.png)
 
+조건문 if, else, else if
+
+	- 문법 : if (A 비교 연산자 B) { true시 실행 코드 }
+		else if (A 비교 연산자 B) { 상위 조건이 거짓이고 현재 조건이 참일 때 실행 코드 }
+		else { false시 실행 코드 } 
+	- Tip { }가 없으면 한줄만 포함이 됨. --> 그냥 무조건 { }을 해주자.
+	
+Switch
+// 입력 변수 조건은 byte, short, int, char, String이어야 하며 break,default를 빼먹지 않도록 주의하여야 함.
+	- 문법 : switch(입력변수) {
+		case (입력값1):
+			실행될 코드 작성
+			break;
+		case (입력값2):
+			실행될 코드 작성
+			break;
+		default:
+			case에 해당되는 값이 하나도 없을 때 기본적으로 실행되는 코드 작성
+			break;
+	}
+
+삼항 연산자
+	삼항 연사자란 조건의 참과 거짓에 따라 어떤 연산을 할지 정해주는것
+	- 문법 :(조건문) ? 참 : 거짓;
+	- Ex) 
+	int a = 10, b =20;
+	int c = a < b ? a + 1 : b + 1;
+	System.out.println(c); // 출력 11
+		
+반복문
+	자바의 반복문 종류
+		1. for문   2.  while문   3.  do ~ while문   4.  향상된 for문
+		
+	1.  for문 : 
+	for(int=i; i<10; i++){
+		실행 코드
+	}
+	for(변수 초기식; 조건식; 증감식) {
+		조건식--> 참인 동안 실행
+	}
 
