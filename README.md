@@ -399,3 +399,55 @@ Switch
 		○ System.out.println(arr); --> 주소값 출력
 		○ 참고로 정수형은 I@로 시작, 실수형은 D@로 시작함
 
+문제 : 배열의 값들을 for문과 같은 반복문을 사용하지 않고 한꺼번에 출력하는 코드를 작성하시오.
+
+	정답 : 
+		1. Arrays.toString()  메서드를 사용하면됨.
+			i. 사용법 : 
+			import java.util.Arrays;
+			int [] arr = {1,2,3,4,5};
+			System.out.println(Arrays.toString(arr));
+			--> 출력 결과 : [1,2,3,4,5] // 반복문을 사용하면 1,2,3,4,5가 출력 됨.
+			--> [ ]의 차이 주의 할것
+
+다중 배열 선언
+		1. int [] a,b,c;
+		2. int d[], e[], f[];
+		○ 1번과 2번의 방법으로 여러개의 배열을 한번에 선언 할 수 있음.
+
+2 차원 배열 선언
+		1. int [] [] arr = {{1,3,5,},{2,4,6}};
+			//이런식으로 배열 선언과 초기화를 하면 됨
+			
+문자 뽑기 메서드
+	charAt(); 메서드 사용 --> 해당 인덱스에 있는 값을 반환 --> 단어를 한글자씩 저장할 수 있음.
+	Ex : charAt(인덱스);
+		String [] str = {"abc","ABC","알파벳"};
+		System.out.println(str[0].chartAt(2)); --> c
+		System.out.println(str[0].chartAt(2)); --> C
+		System.out.println(str[0].chartAt(2)); --> 벳
+
+문자열 뽑기 메서드
+	substring(); 메서드 사용 --> 시작 인덱스부터 종료 인덱스의 값을 반환 -> 문자열을 저장할 수 있음
+	EX : substring(시작,종료); 종료 인덱스는 출력에 포함이 안됌.
+		String [] str = {"abc","ABC","알파벳"};
+		System.out.println(str[0].substring(0)); --> abc
+		System.out.println(str[0].substring(1,2)); --> B
+		System.out.println(str[0].chartAt(1,3)); --> 파벳
+	
+배열 복사 메서드
+	arraycopy() : System.arrayscopy(원본배열명, 원복 배열에서 복사 시작 인덱스, 복사배열명, 복사배열에서 복사 시작 인덱스, 복사 길이);
+	사용법 : 
+		import java.util.Arrays;
+		int [] arr1 = {1,2,3};
+		int [] arr2 = {1,2,3,4,5,6};
+		System.arraycopy(arr1,0,arr2,3,3);
+		System.out.println(Arrays.toString(arr2));
+		// 출력 [1,2,3,1,2,3] 
+		
+배열 길이 구하기와 문자열 길이 구하기
+		1. 배열 길이는 length;를 사용해서 구하면 됨
+			i. arr.length; --> 길이 출력
+		2. 문자열 길이는 length();를 사용해서 구하면 됨
+			i. str.length(); --> 문자열 길이 출력
+
