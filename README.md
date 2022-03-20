@@ -451,3 +451,52 @@ Switch
 		2. 문자열 길이는 length();를 사용해서 구하면 됨
 			i. str.length(); --> 문자열 길이 출력
 
+입력과 배열 문제
+	사용자 입력을 받아 2차원 배열을 생성하고 값을 입력하는 코드를 구현하시오.
+	----------------------------------------------------------
+	행의 갯수를 입력하고 [Enter] 치세요 = 3
+	열의 갯수를 입력하고 [Enter] 치세요 = 3
+	1번째 행에 입력할 문자 3개를 차례대로 입력하고 [Enter] 치세요 = ㄱㄴㄷ
+	2번째 행에 입력할 문자 3개를 차례대로 입력하고 [Enter] 치세요 = ㄹㅁㅂ
+	3번째 행에 입력할 문자 3개를 차례대로 입력하고 [Enter] 치세요 = ㅅㅇㅈ
+	---------------
+	ㄱㄴㄷ
+	ㄹㅁㅂ
+	ㅅㅇㅈ
+	--------------
+	
+	import java.util.Scanner;
+	Scanner sc = new Scanner(System.in);
+	System.out.print("행의 갯수를 입력하고 [Enter] 치세요 = ");
+	int row = sc.nextInt();
+	System.out.print("열의 갯수를 입력하고 [Enter] 치세요 = ");
+	int col = sc.nextInt();
+	String [] [] strar = new String [row][col];
+	
+	for(int i=0; i<col; i++){
+		System.out.printf("%d번째 행에 입력할 문자%d개를 차례대로 입력하고 [Enter] 치세요 = ",i+1,row);
+		String val = sc.next();
+		if(val.length() == row) {
+			for(int j=0;j<row;j++) {
+				strar[i][j] = val.substring(j,j+1);
+			}
+		}
+		else {
+			System.out.println("문자 갯수를 잘못 입력하였습니다. 다시 입력해주세요.");
+			i--;
+		}
+	}
+	for(int i=0; i<strar.length;i++) {
+		for(int j=0;j<strar[i].length; j++) {
+			System.out.print(strar[i][j]);
+		}
+		System.out.println();
+	}
+	
+	- 문자를 입력받을 땐 java.util.Scanner를 import 하고 
+	- Scanner 객체명 = new Scanner(System.in) 를 하여 Scanner 객체를 생성해줘야됨 why? Scanner는 객체이기 때문
+		○ System.in : 키보드에서 사용자로부터 키 입력을 받기 위해서는 System.in을 사용함 
+
+	- Scanner 클래스의 메소드
+	
+	![image](https://user-images.githubusercontent.com/69742511/159166907-1017d64d-716d-4113-a5d5-fb2c0c1c733c.png)
