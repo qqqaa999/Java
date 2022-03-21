@@ -497,6 +497,80 @@ Switch
 	- Scanner 객체명 = new Scanner(System.in) 를 하여 Scanner 객체를 생성해줘야됨 why? Scanner는 객체이기 때문
 		○ System.in : 키보드에서 사용자로부터 키 입력을 받기 위해서는 System.in을 사용함 
 
-	- Scanner 클래스의 메소드
+	- Scanner 클래스의 메서드
 	
 	![image](https://user-images.githubusercontent.com/69742511/159166907-1017d64d-716d-4113-a5d5-fb2c0c1c733c.png)
+
+
+문제.23 아래의 메서드 구현 코드에서 틀린 곳을 찾아 올바르게 수정하시오.
+
+	public void j_23(String[] args) {
+			System.out.println("안녕");
+		}
+	public static void main(String[] args) {
+			// 메서드 호출
+			j_23();
+	}
+
+	정답 :
+		public static void j_23(String[] args) {
+				System.out.println("안녕");
+			}
+		Static 메서드를 적어주어야 객체 생성 없이 호출 할 수 있음.
+		만약 static method없이 사용하려면 (클래스명) (객체 이름) = new (클래스명)(); 을 사용하여 객체를 만들어서 사용하면 됨 // 객체 이름.j_23();
+		
+문제.24 메서드의 정의와 기본적인 자바의 메서드를 작성하시오.
+	
+	정답 : 
+		- 메서드란? : 메서드는 클래스 내장 함수임
+			§ 함수란 : 어떤 특정한 동작이나 처리를 하도록 만들어진 코드 단위임.
+			
+		- 목적 : 반복적인 작업을 처리해야 하는 경우 메서드로 만들어 놓으면 이후에 필요할 때 다시 재사용할 수 있어서 아주 유용함
+		
+		- 특징1 : 메서드는 호출시 어떤 결과를 반환하기도 하지만, 결과를 반환하지 않는 메서드도 있음
+			§ 반환타입 : void
+		- 특징2 : 메서드는 호출시 어떤 인자 값들을 넘겨서 호출하는 경우도 있지만, 인자 값 없이 호출하는 경우도 있음
+	
+		- 메서드 종류 --> 크게 4가지 유형
+			1. 반환값 --> X, 인자값 --> X
+			2. 반환값 --> X, 인자값 --> O
+			3. 반환값 --> O, 인자값 --> X
+			4. 반환값 --> O, 인자값 --> O
+	
+			1. 반환값 --> X, 인자값 --> X
+			public static void showMenu() {
+					// [1] : 반환값 --> X		받는인자값 --> X
+					System.out.println("showMeun() 메서드가 호출되었습니다.");
+				}
+		문제.25
+			2. 반환값 --> X, 인자값 --> O
+			public static void plusMethod(int a ,int b) {
+					System.out.printf("인자로 넘겨받은 2개의 값은 %d와 %d입니다%n",a,b);
+					System.out.printf("합산은 %d입니다.",a+b);
+				}
+		문제.26
+			3. 반환값 --> O, 인자값 --> X
+			public static String returnMethod() {
+					System.out.println("반환 받았습니다.");
+					return "반환";
+				}
+		문제.27
+			4. 반환값 --> O, 인자값 --> O
+			// 소문자를 대문자로 반환 시켜주는 메서드
+				public static String capitalMethod(String rst) {
+					String st = rst.toUpperCase(); // 소문자를 대문자로 바꾸는 메서드
+					return st;
+				}
+			
+Call by value
+	값에 의한 호출 --> 값에 의해서 (메서드를) 호출
+	// 메서드로 인자값을 넘길 때 해당 값을 복사하여 넘기는 방식--> 따라서 메서드 내부에서는 복사된 값으로 처리를 함
+	--> 즉, 넘겨준 변수의 값은 메스드에서 복사를 하여 사용하기 때문에 변하지 않음(원본은 그대로)
+
+Call by reference
+	객체에 의한 호출 --> 주소값에 의해서 (메서드를) 호출
+	// 메서드로 인자값을 넘길 때 해당 주소값을 넘기는 방식 --> 따라서 메서드 내부에서는 주소값으로 처리를 함
+	--> 즉, 넘겨준 변수의 값의 주소를 사용하기 때문에 원복의 변수의 값도 변함.
+
+여러 값 Return
+Java에서는 여러값을 return을 시킬 때 주소값으로 줘야됨. 배열을 활용 등등.
