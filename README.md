@@ -574,3 +574,113 @@ Call by reference
 
 여러 값 Return
 Java에서는 여러값을 return을 시킬 때 주소값으로 줘야됨. 배열을 활용 등등.
+
+OOP
+
+2022년 3월 21일 월요일
+오후 4:40
+
+#Class 개념
+	1. Class란 무엇인가
+		a. 클래스는 객체 또는 인스턴스를 생성하는 하나의 공장이다.
+	2. 클래스를 통해서 객체를 어떻게 만들어내지?
+		a. 특징과 동작을 통해서 만들어냄
+	3. 특징과 동작을 조금 어려운 말로 정의하면?
+		a. 객체의 특징 --> 속성(attribute)--> class안에 있는 변수들
+		b. 객체의 동작 --> 메서드(method)--> class안에 있는 함수들
+	4. 클래스는 왜 탄생했을까?
+		a. 클래스 없이도 객체의 특징(속성)들은 변수로 정의할 수 있ㄹ 것이고, 동작은 함수로 정의할 수 있을 것이다. 그러나 프로그램의 규모가 커지고 여러 사람이 협업을 하는 과정에서 좀더 체계적이고 분업화된 시스템으로 개발하고 확장해나갈 필요성이 있다 --> 이런 일련의 과정에서 OOP가 만들어지고 발전했음.
+	5. 간단하게 위의 내용 코딩
+		class FarmMachine_{
+			//1. 속성(특징)
+			int price;
+			int year;
+			String color;
+			//2. 동작/기능/행동(method) --> 농기계 마다 동작이 다양할 것이므로 처음에는 공통적인 동작을 생각해본다~
+			void move() {
+				System.out.println("Farm-machine is moving.");
+			}
+			void dig() {
+				System.out.println("Farm-machine is digging.");
+			}
+			void grind() {
+				System.out.println("Farm-machine is grinding.");
+			}
+		}
+		
+		public class FarmMachineShop {
+		
+			public static void main(String[] args) {
+				// 1.객체 생성
+				FarmMachine_ fm = new FarmMachine_();
+				
+				// 2. 생성된 객체 속성값 입력
+				fm.price = 1000000;
+				fm.year = 2020;
+				fm.color = "red";
+				
+				// 3. 속성 값 출력하기
+				System.out.println(fm.price);
+				System.out.println(fm.year);
+				System.out.println(fm.color);
+				
+				// 4. 동작 수행하기
+				fm.dig();
+			}
+		
+		}
+	
+#Int 변수의 값에 "," 찍기 메서드 format()
+	String.format("%,d", 변수); --> 변수 1000000 --> 1,000,000
+
+#자료형 확인 메서드 getClass().getName()
+	클래스형변수.getClass().getName() --> java.long.자료형
+	// 기본자료형들은 안됨.
+	
+#문자열을 정수형으로 변환 메서드 Integer.parseInt(변수)
+parseInt()--> Integer 클래스의 static으로 지정 --> 따라서, 객체의 생성없이 바로 "클래스명.parseInt()"로 직접 사용이 가능
+	String str = 123; 
+	int a = Integer.parseInt(str);
+	System.out.println(a+10); -->133
+
+#문자열을 숫자로 변환 시 진수 지정 메서드 Integer.parseInt(변수,진수)
+	int a = 1001; --> 2진수 10진수로는 9
+	System.out.println(Integer.parseInt(a,2));
+	--> 9
+	
+#Class 작성시 주의사항
+	1. 하나의 파일에 2개 이상의 클래스를 작성할 수 있음
+	2. 3개의 클래스가 있다면 자바 파일명이 될 수 있는 것은 public 키워드가 붙은 클래스임
+	3. 한 파일내 3개 이상의 클래스에 모두 public 키워드를 안붙알 슈 있음
+	4. 한 파일내 모든 클래스에 public 키워드가 없다면 클래스중 어느 것이라도 파일명이 될 수 있음
+	5. 자바 파일에 클래스가 한 개 있다면 클래스명이 곧 파일명이 되어야 함
+
+#Class에서 생성자란 무엇인가?
+	
+	1. 생성자(Constructor)
+		a. 개념 : 생성자는 new 키워드로 클래스의 객체(인스턴스)가 생성될 때 제일 먼저 자동적으로 호출되는 특별한 메서드
+		b. 역할 : 객체의 초깃값을 설정하는 등의 용도로 많이 사용됨.
+		c. 특징 :
+			i. 생성자명은 클래스명과 동일하게 만든다.
+			ii. 생성자는 리턴되는 반환값이 없다 --> 객체가 생성될 때 제일 먼저 호출만 된다.
+			iii. 생성자는 오버로딩이 가능하다
+			iv. 생성자는 default 생성자란게 있다 --> 클래스내에 생성자가 없다면 default 생자가 자동 호출 --> 클래스명과 동일하고, 받는 인자값X . 
+	2. 생성자 위치
+		a. 보통 속성과 메서드 사이에 기술함
+		b. 생성자도 메서드이므로 메서드 그룹에 속하는데 제일 상단에 보통 위치함
+	3. EX
+		class Person {
+			// 1. 속성(attribute)
+			int age;
+			String name;
+			
+			// 2. 생성자(Constructor)
+			Person(){
+				System.out.println("사람~~!");
+			}
+			
+			// 3. 메서드(Method)
+			void move() {
+				System.out.println("Person is Moving");
+			}
+		}
