@@ -750,3 +750,61 @@ This.는 생성된 객체 자신을 의미함. 파이썬에서의 self
 		○ 부모 클래스의 접근 제한자가 private인 경우에는 아무리 자식 클래스가 상속을 받았다 하더라도 접근 불가능
 
 
+상속 EX 부모(사람) 자식(히어로)
+	
+	class Person {
+		//Field
+		int gender;
+		int power;
+		//Constructor
+		
+		Person(){
+			this.gender = 1; //남성1,여성2
+			this.power = 100; // 일반인 파워 100
+		}
+		//Method
+		void walk() {
+			System.out.println("걸어가고 있어요!");
+		}
+	}
+	
+	class Hero extends Person{
+		//Field
+		String name;
+		int age;
+		//Constructor
+		Hero(String name, int age){
+			super.power=300; // 부모 클래스의 생성자(Constructor)을 호출함
+			this.name=name;
+			this.age=age;
+		}
+		//Method
+		void walk() { //오버라이딩 : 부모 클래스의 메서드를 재정의 하는것
+					  //오버로딩 : 메소드 이름은 같지만 파라미터 수와 타입을 다르게 하여 메소드를 셍성한것
+			System.out.println("히어로가 걸어가고 있어요!");
+		}
+		void eat() {
+			System.out.println("밥 먹고 있어요~");
+		}
+		void displayPerson() {
+			System.out.println("이름: "+name+" 나이: "+age+" 성별: "+gender+" 파워: "+power);
+		}
+	}
+	
+	public class Java_oop1 {
+		public static void main(String[] args) {
+			//객체 생성
+			Person p1 = new Person();
+			p1.walk();
+			Hero h1 = new Hero("슈퍼맨",20);
+			h1.displayPerson();
+			Hero h2 = new Hero("원더우면",30);
+			h2.displayPerson();
+		}
+	}
+	
+	--------------------------------------------------
+	걸어가고 있어요!
+	이름: 슈퍼맨 나이: 20 성별: 1 파워: 300
+	이름: 원더우면 나이: 30 성별: 1 파워: 300
+
