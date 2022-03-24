@@ -808,3 +808,167 @@ This.는 생성된 객체 자신을 의미함. 파이썬에서의 self
 	이름: 슈퍼맨 나이: 20 성별: 1 파워: 300
 	이름: 원더우면 나이: 30 성별: 1 파워: 300
 
+Getter Setter란
+
+	객제 외부에서 직접적으로 데이터에 접근하는것을 막기위한것.
+		Setter : 메소드를 통하여 멤버변수에 데이터를 저장
+		Getter : 메소드를 통하여 멤버변수의 데이터를 불러옴
+	
+	class Person{
+		//Field
+		private String name;
+		private int age;
+		private int height;
+		private int weight;
+	
+	//Method
+		public void setName(String name) {this.name=name;}
+		public String getName() {return this.name;}
+		
+		public void setAge(int age) {this.age=age;}
+		public int getAge() {return this.age;}
+		
+		public void setHeight(int height) {this.height=height;}
+		public int getHeight() {return this.height;}
+		
+		public void setWeight(int weight) {this.weight=weight;}
+		public int getWeight() {return this.weight;}
+	}
+	 
+	
+	
+	# 원본 #
+	class Person{
+		//Field
+		private String name;
+		private int age;
+		private int height;
+		private int weight;
+	
+		//Constructor
+		Person(){}
+		Person(String name, int age, int height, int weight){
+			this.name=name;
+			this.age=age;
+			this.height=height;
+			this.weight=weight;
+		}
+		
+		//Method
+		public void setName(String name) {this.name=name;}
+		public String getName() {return this.name;}
+		
+		public void setAge(int age) {this.age=age;}
+		public int getAge() {return this.age;}
+		
+		public void setHeight(int height) {this.height=height;}
+		public int getHeight() {return this.height;}
+		
+		public void setWeight(int weight) {this.weight=weight;}
+		public int getWeight() {return this.weight;}
+	}
+	
+	class Hero extends Person {
+		
+		//Field
+		String unique_key;
+		int weapon; //1~9 숫자로 무기 분류 --> 1:창 2:총 3:검
+		double power;
+		
+		//Constructor
+		
+		//Method
+	}
+	
+	class Villain extends Person{
+		//Field
+		private String unique_key;
+		private int weapon; //1~9 숫자로 무기 분류 --> 1:창 2:총 3:검
+		private double power;
+		
+		//Constructor
+		Villain(){}
+		Villain(String name,int age,int height,int weight,String unique_key,int weapon,double power){
+			super(name,age,height,weight);
+			this.unique_key=unique_key;
+			this.weapon=weapon;
+			this.power=power;
+		}
+		
+		//Method
+		public void setUnique_key(String unique_key) {this.unique_key=unique_key;}
+		public String getUnique_key() {return this.unique_key;}
+		
+		public void setWeapon(int weapon) {this.weapon=weapon;}
+		public int getWeapon() {return this.weapon;}
+		
+		public void setPower(double power ) {this.power=power;}
+		public double getPower() {return this.power;}
+		
+		public void printPerson() {
+			System.out.println("-------------------------");
+			System.out.println("악당 이름: "+getName());
+			System.out.println("악당 나이: "+getAge());
+			System.out.println("악당의 키: "+getHeight());
+			System.out.println("악당 체중: "+getWeight());
+			System.out.println("악당 넘버: "+getUnique_key());
+			System.out.println("악당 무기: "+getWeaponName(getWeapon())); //숫자(1~9) --> 1:창 2:검 3:총
+			System.out.println("악당 파워: "+getPower());
+			System.out.println("-------------------------");
+		}
+		
+		public String getWeaponName(int num) {
+			
+			String weapon = "주먹";
+			
+			switch(num) {
+				case 1: weapon="창"; break;
+				case 2: weapon="검"; break;
+				case 3: weapon="방패";break;
+				case 4: weapon="총"; break;
+				case 5: weapon="단검";break;
+				case 6: weapon="단검";break;
+			}
+			return weapon;
+			
+		}
+		
+		public void move() {
+			System.out.println("이동중..");
+		}
+	}
+	public class CardGame {
+		public static void main(String[] args) {
+			//객체 생성
+			Person p1 = new Person();
+			p1.setName("홍길동");
+			System.out.println(p1.getName());
+			
+			// 좀비 객체
+			Villain v1 = new Villain("좀비",20,182,80,"12/22",1,150);
+			v1.printPerson();
+			System.out.print(v1.getName()+" ");
+			v1.move();
+			
+			// 도깨비 객체
+			Villain v2 = new Villain("도깨비",102,85,20,"01/17",6,225);
+			v2.printPerson();
+			System.out.print(v2.getName()+" ");
+			v2.move();
+	
+		}
+	}
+
+객체로 된 배열 만들기
+
+	배열에 객체의 주소값을 넣어주면 됨.
+	
+	만약 for문을 활용하면 -->
+	
+		// 좀비 10마리 생성 code
+		Villain [] v1_ar = new Villain[10];
+		String zb_name;
+		for(int i=1;i<v1_ar.length;i++) {
+			zb_name = "좀비"+i; 
+			v1_ar[i] = new Villain(zb_name,20,182,80,"12/22",1,150);
+			v1_ar[i].printPerson();
