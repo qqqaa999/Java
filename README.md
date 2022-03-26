@@ -1044,3 +1044,130 @@ Getter Setter란
 			// 분업화된 시스템에서 공통의 프로젝트를 진행할 때 많이 사용되어지는 중요한 문법임.
 		}
 	}
+
+인터페이스
+	
+	- 사전적 의미 --> 결합부,접속시 --> 사용자간 또는 컴퓨터간 통신이 가능하도록 해주는 디바이스나 프로그램.
+	
+		○ 큰 틀에서 본다면 자바에서의 인터페이스 개념도 사전적 의미와 비슷함
+		○ 상호간 통신을 위해서는 "규격"이 중요하다 --> 일본의 110v 가전제품을 한국으로 가지고 와도 "규격"이 맞지 않으므로 사용할 수 없음
+		○ 일본의 가전기업들이 한국에서 전자제품을 팔고 싶다면 한국내 220v "규격"을 지켜서 만들어야만 팔 수 있다.
+			§ 이러한 "규격"을 인터페이스라 할 수 있고, 인터페이스는 하나의 "표준화"를 제공하는 것이라 할 수 있음
+	
+	- 추상클래스 vs 인터페이스?
+	
+		○ 인터페이스는 추상클래스와 거의 비슷하다 그러나 그 추상화 정도가 더 높다(엄격함). --> 따라서, 일반 메서드 멤버 필드(변수)를 가질 수 없음.
+		○ 이러한 점들이 추상 클래스와 인터페이스간 가장 큰 차이점 중 하나임
+
+	- 자바에서의 인터페이스 문법?
+	
+		○ 표준화 및 규격을 인터페이스로 제공.
+			§ 따라서 어떤 클래스가 해당 인터페이스를 사용(상속)한다면 인터페이스에 선언되어져 있는 메서드를 구현해야함.
+		○ 인터페이스는 class 키워드를 사용하지 않고 별도의 interface 키워드를 사용함.
+			§ class -> extends,    interface -> implements
+		○ 추상 클래스와 같이 메서드의 구체적인 내용은 기술되어져 있지 않으므로 인터페이스를 상속받은 클래스에서 재정의(오버라이링)하여 사용해야함
+
+	- 상속 vs 구현
+		○ 클래스와 인터페이스 이 둘의 가장 큰 차이점중 하나는 "상속"임
+			§ 클래스는 단일 상속
+			§ 인터페이스는 다중 상속
+				□ 인터페이스는 상속(extends)이라는 표현을 쓰지않고 "구현"의 의미를 강조하는 implements 키워드를 사용하여 다중 상속을 구현함
+
+인터페이스(Inteface) 정리
+	- 인터페이스란 : 추상 클래스와 거의 비슷하거나 그 추상화 정도가 더 높다(엄격)
+		○ 일반 메서드나 멤버 필드(변수)를 가질 수 없음
+		○ 표준화 및 규격을 인터페이스로 제종 --> 일종의 "설계도"개념.
+			§ 따라서 어떤 클래스가 해당 인터페이스를 사용(상속)한다면 인터페이스에 선언되어져 있는 메서드를 구현.
+		○ 인터페이스는 interface 키워드를 사용
+		○ 추상 클래스와 같이 메서드의 구체적인 내용은 기술되어져 있지 않으므로 인터페이스를 상속받은 클래스에서 재정의(오버라이딩)하여 사용
+
+	- 상속
+		○ 클래스는 "단일 상속"만 가능, 인터페이스는 "다중 상속"이 가능 --> 가장 큰 차이점
+			§ class --> extends,    interface --> implements --> 다중 상속을 구현 --> A, B --> 콤마(,)로 분리
+
+	- 장점
+		○ 인터페이스를 이용하면 메서드의 추상적인 "선언"과 그 메서드를 구체적인 "구현" 부분을 분리시킬 수 있음 --> 매우 큰 장점
+			§ 하청을 주는 대기업(갑)은 하청업체(을)에 인터페이스만 제공 --> 각 하청업체(을)들이 이를 준수하여(상속 받아) 개발.
+
+	- 우선 순위(extends vs implements)
+		○ 상속을 받는 extends 키워드와 구현을 하는 implements 키워드가 동시에 쓰일 때 --> extends 키워드가 항상 먼저 쓰임
+			§ EX) class Student extends Person implements A,B
+
+	- Code
+		
+		interface Allowance {
+			//Field
+			// 변수는 안되나 상수는 되므로 상수로 지정해주면 됨 --> public static final을 붙여주면 됨.
+			// 인터페이스네 모든 멤버 필드(변수)는 public static final이여야 함 --> 생략 가능.
+			public static final String kr = "한국";
+			public static final int a = 100;
+			int b = 200; //컴파일 내에서 public static final을 붙여줌.
+			
+			// Abstract Method
+			// 인터페이스내 모든 메서드는 public abstract 이어야 함 --> 생략이 가능
+			void in(int allowance, String name); // public abstract void in() {}
+			abstract void out(int price, String name);
+		}
+		
+		interface Train {
+			abstract void train(int training_pay, String name);
+		}
+		
+		class Person_i{
+			//Field
+			String name;
+			int age;
+			int weight;
+			
+			//Constructor
+			Person_i(){}
+			Person_i(String name, int age, int weight){
+				this.name = name;
+				this.age = age;
+				this.weight = weight;
+			}
+			
+			//Method
+			void wash() {System.out.println("씻다.");}
+			void study() {System.out.println("공부하다.");}
+			void play() {System.out.println("놀다");}
+		}
+		
+		class Student extends Person_i implements Allowance,Train{
+			
+			//Field
+			
+			//Constructor
+			Student(){}
+			Student(String name, int age, int weight){
+				super(name,age,weight);
+			}
+			
+			//Method
+			public void in(int allowance, String name) {
+				System.out.printf("%s에게서 %d원 용돈을 받았습니다%n",name,allowance);
+			}
+			public void out(int price, String name) {
+				System.out.printf("%d원을 지출했습니다. [지출용도 --> %s]%n",price,name);
+			}
+			
+			public void train(int training_pay, String name) {
+				System.out.printf("[%s --> %d원 입금완료]%n", name, training_pay);
+			}
+		
+		}
+		public class Inaasss {
+			public static void main(String [] args) {
+				
+				//1. 객체 생성
+				Student s1 = new Student("홍길동",17,70);
+				
+				//2. 클래스와 인터페이스로 부터 상속(Person)과 구현(Allowance,Train)을 한 메서드를 호출하기
+				s1.wash();
+				s1.study();
+				s1.play();
+				s1.in(10000, "엄마");
+				s1.out(5000,"편의점");
+				s1.train(20000, "훈련비");
+			}
+}
